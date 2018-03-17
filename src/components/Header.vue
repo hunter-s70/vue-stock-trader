@@ -3,15 +3,15 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Stock Trader</a>
+    <router-link :to="{name: 'Home'}" class="navbar-brand" exact>Stock Trader</router-link>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Portfolio <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <router-link :to="{name: 'Portfolio'}" class="nav-link">Portfolio</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Stocks</a>
+          <router-link :to="{name: 'Stocks'}" class="nav-link">Stocks</router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
@@ -53,4 +53,7 @@ export default {
 </script>
 
 <style scoped>
+  .nav-link.router-link-active {
+    text-decoration: underline;
+  }
 </style>
