@@ -29,6 +29,7 @@ module.exports = {
       'comma-dangle': ['error', 'never'],
       'generator-star-spacing': 'off',
       'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+      'space-before-function-paren': 'off',
       'space-in-parens': ['error', 'never'],
       'no-underscore-dangle': 'off',
       'no-param-reassign': 'off',

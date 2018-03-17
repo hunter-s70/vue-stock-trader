@@ -9,7 +9,7 @@
 import Header from '@/components/Header'
 
 export default {
-  data () {
+  data() {
     return {
     }
   },
