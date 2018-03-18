@@ -3,7 +3,7 @@
     <div class="card text-left">
       <h3 class="card-header" :class="headerColor">{{ stock.name }}&nbsp;
         <small class="text-muted" v-if="isInStocks">(price: {{ stock.price }} | quantity: {{ stock.quantity }})</small>
-        <small class="text-muted">(price: {{ stock.price }})</small>
+        <small class="text-muted" v-if="!isInStocks">(price: {{ stock.price }})</small>
       </h3>
       <div class="card-block d-flex justify-content-between align-items-start">
         <div class="form-group w-50 m-0">
@@ -37,8 +37,8 @@ export default {
       const order = {
         id: this.stock.id,
         name: this.stock.name,
-        price: this.stock.price,
-        quantity: this.setQuantity
+        price: +this.stock.price,
+        quantity: +this.setQuantity
       };
       this.$store.dispatch('buyStock', order);
     },

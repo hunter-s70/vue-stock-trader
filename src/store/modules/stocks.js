@@ -19,7 +19,7 @@ export default {
       commit('setStocks', data);
     },
     buyStock({commit}, order) {
-      console.log(order);
+      commit('buyStock', order);
     }
   }
 }

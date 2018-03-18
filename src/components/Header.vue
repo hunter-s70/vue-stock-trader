@@ -38,7 +38,7 @@
           </div>
         </li>
       </ul>
-      <strong class="navbar-text">Funds: 12 UAH</strong>
+      <strong class="navbar-text">Funds: {{ money }} UAH</strong>
     </div>
   </nav>
 </template>
@@ -47,6 +47,11 @@
 export default {
   data() {
     return {
+    }
+  },
+  computed: {
+    money() {
+      return this.$store.getters.getMoney;
     }
   }
 }

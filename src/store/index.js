@@ -10,10 +10,5 @@ export default new Vuex.Store({
   modules: {
     stocks,
     portfolio
-  },
-  state: {
-    money: '',
-    ownedStocks: '',
-    allStocks: ''
   }
 })
