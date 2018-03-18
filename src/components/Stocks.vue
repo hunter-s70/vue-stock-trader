@@ -11,8 +11,11 @@ import StockItem from '@/components/StockItem';
 
 export default {
   data() {
-    return {
-      stocks: [{id: 1}, {id: 2}]
+    return {}
+  },
+  computed: {
+    stocks() {
+      return this.$store.getters.getStocks;
     }
   },
   components: {
