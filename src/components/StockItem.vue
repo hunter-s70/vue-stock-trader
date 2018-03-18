@@ -9,8 +9,14 @@
         <div class="form-group w-50 m-0">
           <input type="number" class="form-control" placeholder="Quantity" v-model="setQuantity">
         </div>
-        <button v-if="!isInStocks" class="btn btn-success" @click="buyStock">Buy</button>
-        <button v-if="isInStocks" class="btn btn-danger" @click="sellStock">Sell</button>
+        <button v-if="!isInStocks"
+                class="btn btn-success"
+                @click="buyStock"
+                :disabled="isDisabled">Buy</button>
+        <button v-if="isInStocks"
+                class="btn btn-danger"
+                @click="sellStock"
+                :disabled="isDisabled">Sell</button>
       </div>
     </div>
   </div>
@@ -28,6 +34,9 @@ export default {
     isInStocks() {
       return this.stock.quantity;
     },
+    isDisabled() {
+      return this.setQuantity <= 0 || !Number.isInteger(+this.setQuantity);
+    },
     headerColor() {
       return this.isInStocks ? 'bg-blue' : 'bg-green';
     }
@@ -41,6 +50,7 @@ export default {
         quantity: +this.setQuantity
       };
       this.$store.dispatch('buyStock', order);
+      this.setQuantity = '';
     },
     sellStock() {}
   }
