@@ -52,7 +52,15 @@ export default {
       this.$store.dispatch('buyStock', order);
       this.setQuantity = '';
     },
-    sellStock() {}
+    sellStock() {
+      const order = {
+        id: this.stock.id,
+        price: +this.stock.price,
+        quantity: +this.setQuantity
+      };
+      this.$store.dispatch('sellStock', order);
+      this.setQuantity = '';
+    }
   }
 }
 </script>
