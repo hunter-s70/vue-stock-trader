@@ -14,6 +14,7 @@ export default {
   mutations: {
     buyStock(state, {id, name, price, quantity}) {
       const record = state.stocks.find(el => el.id === id);
+      if ((price * quantity) > state.money) return;
       if (record) {
         record.quantity += quantity;
       } else {
@@ -23,6 +24,7 @@ export default {
     },
     sellStock(state, {id, price, quantity}) {
       const record = state.stocks.find(el => el.id === id);
+      if (quantity > record.quantity) return;
       if (record.quantity > quantity) {
         record.quantity -= quantity;
       } else {
