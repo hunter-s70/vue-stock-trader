@@ -19,7 +19,7 @@
       </ul>
       <ul class="navbar-nav mx-2">
         <li class="nav-item">
-          <a class="nav-link" href="#">End Day</a>
+          <span class="nav-link pointer" @click="dayEnd">End Day</span>
         </li>
         <li class="nav-item">
           <div class="dropdown">
@@ -49,6 +49,11 @@ export default {
     return {
     }
   },
+  methods: {
+    dayEnd() {
+      this.$store.commit('setRandomPrice');
+    }
+  },
   computed: {
     money() {
       return this.$store.getters.getMoney;
@@ -60,5 +65,8 @@ export default {
 <style scoped>
   .nav-link.router-link-active {
     text-decoration: underline;
+  }
+  .pointer {
+    cursor: pointer;
   }
 </style>

@@ -12,6 +12,11 @@ export default {
   mutations: {
     setStocks(state, stocks) {
       state.stocks = stocks;
+    },
+    setRandomPrice(state) {
+      state.stocks.forEach((item) => {
+        item.price = Math.floor(205 + Math.random() * 696);
+      });
     }
   },
   actions: {
