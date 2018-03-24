@@ -7,7 +7,7 @@
           <p class="card-text header-card-text">You may Save & Load your Data</p>
           <p class="card-text header-card-text">Click to the 'End Day' to begin a new Day!</p>
           <hr/>
-          <strong class="card-text">Funds: 12 UAH</strong>
+          <strong class="card-text">Funds: {{ money }} UAH</strong>
         </div>
       </div>
     </div>
@@ -16,8 +16,9 @@
 
 <script>
 export default {
-  data () {
-    return {
+  computed: {
+    money() {
+      return this.$store.getters.getMoney;
     }
   }
 }
