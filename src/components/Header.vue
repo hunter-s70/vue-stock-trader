@@ -38,7 +38,7 @@
           </div>
         </li>
       </ul>
-      <strong class="navbar-text">Funds: {{ money }} UAH</strong>
+      <strong class="navbar-text">Funds: {{ money | currency }} UAH</strong>
     </div>
   </nav>
 </template>

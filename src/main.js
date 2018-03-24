@@ -10,6 +10,10 @@ Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
 
+Vue.filter('currency', function (value) {
+  return value.toLocaleString();
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
