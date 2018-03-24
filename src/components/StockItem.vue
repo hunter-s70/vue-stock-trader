@@ -42,13 +42,13 @@ export default {
       return this.$store.getters.getMoney;
     },
     priceError() {
-      return this.stock.price * this.setQuantity > this.money;
+      return +this.stock.price * +this.setQuantity > +this.money;
     },
     quantityError() {
-      return this.setQuantity > this.stock.quantity;
+      return +this.setQuantity > +this.stock.quantity;
     },
     isDisabled() {
-      return this.setQuantity <= 0 || !Number.isInteger(+this.setQuantity);
+      return +this.setQuantity <= 0 || !Number.isInteger(+this.setQuantity);
     },
     headerColor() {
       return this.isInStocks ? 'bg-blue' : 'bg-green';
