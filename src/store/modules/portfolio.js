@@ -4,8 +4,16 @@ export default {
     stocks: []
   },
   getters: {
-    getPortfolioStocks(state) {
-      return state.stocks;
+    getPortfolioStocks(state, getters) {
+      return state.stocks.map(stock => {
+        const record = getters.getStocks.find(el => el.id === stock.id);
+        return {
+          id: stock.id,
+          quantity: stock.quantity,
+          name: stock.name,
+          price: record.price
+        };
+      })
     },
     getMoney(state) {
       return state.money;
