@@ -7,16 +7,20 @@
       </h3>
       <div class="card-block d-flex justify-content-between align-items-start">
         <div class="form-group w-50 m-0">
-          <input type="number" class="form-control" placeholder="Quantity" v-model="setQuantity">
+          <input type="number"
+                 class="form-control"
+                 :class="{danger: priceError || quantityError}"
+                 placeholder="Quantity"
+                 v-model="setQuantity">
         </div>
         <button v-if="!isInStocks"
                 class="btn btn-success"
                 @click="buyStock"
-                :disabled="isDisabled">Buy</button>
+                :disabled="isDisabled || priceError">Buy</button>
         <button v-if="isInStocks"
                 class="btn btn-danger"
                 @click="sellStock"
-                :disabled="isDisabled">Sell</button>
+                :disabled="isDisabled || quantityError">Sell</button>
       </div>
     </div>
   </div>
@@ -33,6 +37,15 @@ export default {
   computed: {
     isInStocks() {
       return this.stock.quantity;
+    },
+    money() {
+      return this.$store.getters.getMoney;
+    },
+    priceError() {
+      return this.stock.price * this.setQuantity > this.money;
+    },
+    quantityError() {
+      return this.setQuantity > this.stock.quantity;
     },
     isDisabled() {
       return this.setQuantity <= 0 || !Number.isInteger(+this.setQuantity);
@@ -71,5 +84,8 @@ export default {
   }
   .bg-green {
     background-color: #D8FFD3;
+  }
+  .danger {
+    border: solid 1px #ff727c;
   }
 </style>
