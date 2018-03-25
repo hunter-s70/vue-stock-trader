@@ -20,6 +20,12 @@ export default {
     }
   },
   mutations: {
+    setPortfolioStocks(state, stocks) {
+      state.stocks = stocks;
+    },
+    setMoney(state, money) {
+      state.money = money;
+    },
     buyStock(state, {id, name, price, quantity}) {
       const record = state.stocks.find(el => el.id === id);
       if ((price * quantity) > state.money) return;

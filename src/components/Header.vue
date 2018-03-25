@@ -57,12 +57,10 @@ export default {
         portfolioStocks: this.$store.getters.getPortfolioStocks,
         allStocks: this.$store.getters.getStocks
       };
-      this.$http.put('data.json', data);
+      this.$store.dispatch('saveData', data);
     },
     loadData() {
-      this.$http.get('data.json').then(data => {
-        console.log(JSON.parse(data.bodyText));
-      });
+      this.$store.dispatch('loadData');
     }
   },
   computed: {
