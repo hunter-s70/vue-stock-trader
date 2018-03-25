@@ -15,6 +15,7 @@ Vue.http.options.root = 'https://stock-trade-ee860.firebaseio.com/';
 Vue.config.productionTip = false
 
 Vue.filter('currency', function (value) {
+  if (!value) return '';
   return value.toLocaleString();
 });
 

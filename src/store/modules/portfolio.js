@@ -16,6 +16,7 @@ export default {
       })
     },
     getMoney(state) {
+      if (state.money > 100000) alert('You win!');
       return state.money;
     }
   },
