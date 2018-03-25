@@ -5,8 +5,12 @@ import App from './App'
 import router from './router'
 import store from './store'
 import BootstrapVue from 'bootstrap-vue'
+import VueResource from 'vue-resource'
 
 Vue.use(BootstrapVue)
+Vue.use(VueResource)
+
+Vue.http.options.root = 'https://stock-trade-ee860.firebaseio.com/';
 
 Vue.config.productionTip = false
 

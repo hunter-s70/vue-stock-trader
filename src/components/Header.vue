@@ -22,18 +22,15 @@
           <span class="nav-link pointer" @click="dayEnd">End Day</span>
         </li>
         <li class="nav-item">
-          <div class="dropdown">
+          <div class="dropdown" :class="{show: dropdownToggle}">
             <button class="btn btn-secondary dropdown-toggle"
                     type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false">
+                    @click="dropdownToggle = !dropdownToggle">
               Save & Load
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Save Data</a>
-              <a class="dropdown-item" href="#">Load Data</a>
+              <span class="dropdown-item pointer" @click="saveData">Save Data</span>
+              <span class="dropdown-item pointer" @click="loadData">Load Data</span>
             </div>
           </div>
         </li>
@@ -47,11 +44,25 @@
 export default {
   data() {
     return {
+      dropdownToggle: false
     }
   },
   methods: {
     dayEnd() {
       this.$store.commit('setRandomPrice');
+    },
+    saveData() {
+      const data = {
+        money: this.$store.getters.getMoney,
+        portfolioStocks: this.$store.getters.getPortfolioStocks,
+        allStocks: this.$store.getters.getStocks
+      };
+      this.$http.put('data.json', data);
+    },
+    loadData() {
+      this.$http.get('data.json').then(data => {
+        console.log(JSON.parse(data.bodyText));
+      });
     }
   },
   computed: {
