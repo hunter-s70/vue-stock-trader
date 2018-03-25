@@ -9,7 +9,7 @@
         <div class="form-group w-50 m-0">
           <input type="number"
                  class="form-control"
-                 :class="{danger: priceError || quantityError}"
+                 :class="{danger: (!isInStocks && priceError) || (isInStocks && quantityError)}"
                  placeholder="Quantity"
                  v-model="setQuantity">
         </div>
