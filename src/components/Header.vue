@@ -58,9 +58,11 @@ export default {
         allStocks: this.$store.getters.getStocks
       };
       this.$store.dispatch('saveData', data);
+      this.dropdownToggle = false;
     },
     loadData() {
       this.$store.dispatch('loadData');
+      this.dropdownToggle = false;
     }
   },
   computed: {
