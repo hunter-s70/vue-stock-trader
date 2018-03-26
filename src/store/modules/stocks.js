@@ -25,6 +25,7 @@ export default {
     },
     buyStock({commit}, order) {
       commit('buyStock', order);
+      commit('endingDayToggle');
     }
   }
 }

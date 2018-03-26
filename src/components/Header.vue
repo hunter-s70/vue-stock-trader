@@ -19,7 +19,10 @@
       </ul>
       <ul class="navbar-nav mx-2">
         <li class="nav-item">
-          <span class="nav-link pointer" @click="dayEnd">End Day</span>
+          <button class="btn btn-secondary mr-2"
+                  type="button"
+                  :disabled="canEndingDay"
+                  @click="dayEnd">End day</button>
         </li>
         <li class="nav-item">
           <div class="dropdown" :class="{show: dropdownToggle}">
@@ -50,6 +53,7 @@ export default {
   methods: {
     dayEnd() {
       this.$store.commit('setRandomPrice');
+      this.$store.commit('endingDayToggle');
     },
     saveData() {
       const data = {
@@ -68,6 +72,9 @@ export default {
   computed: {
     money() {
       return this.$store.getters.getMoney;
+    },
+    canEndingDay() {
+      return !this.$store.getters.getEndingDay;
     }
   }
 }

@@ -1,6 +1,7 @@
 export default {
   state: {
     money: 10000,
+    canEndingDay: false,
     stocks: []
   },
   getters: {
@@ -18,6 +19,9 @@ export default {
     getMoney(state) {
       if (state.money > 100000) alert('You win!');
       return state.money;
+    },
+    getEndingDay(state) {
+      return state.canEndingDay;
     }
   },
   mutations: {
@@ -26,6 +30,9 @@ export default {
     },
     setMoney(state, money) {
       state.money = money;
+    },
+    endingDayToggle(state) {
+      state.canEndingDay = !state.canEndingDay;
     },
     buyStock(state, {id, name, price, quantity}) {
       const record = state.stocks.find(el => el.id === id);
