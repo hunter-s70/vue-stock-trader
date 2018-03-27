@@ -2,6 +2,7 @@ export default {
   state: {
     money: 10000,
     canEndingDay: false,
+    level: 1,
     stocks: []
   },
   getters: {
@@ -17,11 +18,13 @@ export default {
       })
     },
     getMoney(state) {
-      if (state.money > 100000) alert('You win!');
       return state.money;
     },
     getEndingDay(state) {
       return state.canEndingDay;
+    },
+    getLevel(state) {
+      return state.level;
     }
   },
   mutations: {
@@ -33,6 +36,17 @@ export default {
     },
     endingDayToggle(state) {
       state.canEndingDay = !state.canEndingDay;
+    },
+    levelUp(state) {
+      state.level = state.level + 1;
+    },
+    resetGame(state) {
+      if (state.money > 100000) {
+        alert('You win!');
+        state.stocks = [];
+        state.level = 0;
+        state.money = 10000;
+      }
     },
     buyStock(state, {id, name, price, quantity}) {
       const record = state.stocks.find(el => el.id === id);
@@ -58,6 +72,7 @@ export default {
   actions: {
     sellStock({commit}, order) {
       commit('sellStock', order);
+      commit('resetGame');
     }
   }
 }

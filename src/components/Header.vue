@@ -17,7 +17,7 @@
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>
       </ul>
-      <ul class="navbar-nav mx-2">
+      <ul class="navbar-nav mr-2">
         <li class="nav-item">
           <button class="btn btn-secondary mr-2"
                   type="button"
@@ -38,7 +38,8 @@
           </div>
         </li>
       </ul>
-      <strong class="navbar-text">Funds: {{ money | currency }} UAH</strong>
+      <strong class="navbar-text mr-2">Funds: {{ money | currency }} UAH</strong>
+      <strong class="navbar-text">Day: {{ day }}</strong>
     </div>
   </nav>
 </template>
@@ -54,6 +55,7 @@ export default {
     dayEnd() {
       this.$store.commit('setRandomPrice');
       this.$store.commit('endingDayToggle');
+      this.$store.commit('levelUp');
     },
     saveData() {
       const data = {
@@ -72,6 +74,9 @@ export default {
   computed: {
     money() {
       return this.$store.getters.getMoney;
+    },
+    day() {
+      return this.$store.getters.getLevel;
     },
     canEndingDay() {
       return !this.$store.getters.getEndingDay;
