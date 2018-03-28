@@ -34,8 +34,8 @@ export default {
     setMoney(state, money) {
       state.money = money;
     },
-    endingDayToggle(state) {
-      state.canEndingDay = !state.canEndingDay;
+    endingDayToggle(state, value) {
+      state.canEndingDay = value;
     },
     levelUp(state) {
       state.level = state.level + 1;

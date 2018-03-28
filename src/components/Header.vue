@@ -54,7 +54,7 @@ export default {
   methods: {
     dayEnd() {
       this.$store.commit('setRandomPrice');
-      this.$store.commit('endingDayToggle');
+      this.$store.commit('endingDayToggle', false);
       this.$store.commit('levelUp');
     },
     saveData() {
