@@ -44,7 +44,7 @@ export default {
       if (state.money > 100000) {
         alert('You win!');
         state.stocks = [];
-        state.level = 0;
+        state.level = 1;
         state.money = 10000;
       }
     },
