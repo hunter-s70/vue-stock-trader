@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import stocks from './modules/stocks'
 import portfolio from './modules/portfolio'
+import $ajax from '@/api/requests'
 
 Vue.use(Vuex);
 
@@ -14,11 +15,10 @@ export default new Vuex.Store({
   actions: {
     // eslint-disable-next-line
     saveData({commit}, data) {
-      Vue.http.put('data.json', data);
+      $ajax.saveData(data);
     },
     loadData({commit}) {
-      Vue.http.get('data.json')
-        .then(responce => responce.json())
+      $ajax.loadData()
         .then(data => {
           if (data) {
             commit('setStocks', data.allStocks);
